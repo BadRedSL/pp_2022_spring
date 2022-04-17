@@ -52,7 +52,7 @@ std::vector<int> getParallelDeicstra(
   int top = 0;
   const int count = graf.size();
   std::vector<int> result(count * count, 0);
-  int numThreads = 12;
+  int numThreads = 6;
 
 #pragma omp parallel for shared(count, result, graf) private(top) \
     schedule(static) num_threads(numThreads)
