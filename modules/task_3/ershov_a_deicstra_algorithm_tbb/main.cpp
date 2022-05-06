@@ -1,8 +1,8 @@
 // Copyright 2022 Ershov Aleksey
 #include <gtest/gtest.h>
 
- #include <chrono>
- #include <iostream>
+// #include <chrono>
+// #include <iostream>
 #include <vector>
 
 #include "./deicstra_tbb.h"
@@ -72,7 +72,7 @@ TEST(Sequential_Deicstra, Test_Sequential_Deicstra_Two_Times_Static) {
 }
 
 TEST(Sequential_Deicstra, Test_Sequential_Deicstra_Two_Times_Random) {
-  const std::vector<std::vector<int>> graf = getRandomVector(10);
+  const std::vector<std::vector<int>> graf = getRandomVector(5);
   bool check = true;
   const int count = graf.size();
 
@@ -110,21 +110,21 @@ TEST(Parallel_Deicstra, Test_Parallel_Deicstra_With_Seq_Static) {
 }
 
 TEST(Parallel_Deicstra, Test_Parallel_Deicstra_With_Seq_Random) {
-  const std::vector<std::vector<int>> graf = getRandomVector(250);
+  const std::vector<std::vector<int>> graf = getRandomVector(10);
   bool check = true;
   const int count = graf.size();
 
-   auto t1 = std::chrono::system_clock::now();
+  // auto t1 = std::chrono::system_clock::now();
   const std::vector<int> algorithmResultSeq = getSequentialDeicstra(graf);
-   auto t2 = std::chrono::system_clock::now();
-   auto dt = t2 - t1;
-   std::cout << "Sequential time = " << dt.count() << std::endl;
+  // auto t2 = std::chrono::system_clock::now();
+  // auto dt = t2 - t1;
+  // std::cout << "Sequential time = " << dt.count() << std::endl;
 
-   t1 = std::chrono::system_clock::now();
+  // t1 = std::chrono::system_clock::now();
   const std::vector<int> algorithmResultRarallel = getParallelDeicstra(graf);
-   t2 = std::chrono::system_clock::now();
-   dt = t2 - t1;
-   std::cout << "Parallel time = " << dt.count() << std::endl;
+  // t2 = std::chrono::system_clock::now();
+  // dt = t2 - t1;
+  // std::cout << "Parallel time = " << dt.count() << std::endl;
 
   for (int i = 0; i < count; ++i) {
     if (algorithmResultSeq[i] != algorithmResultRarallel[i]) {
