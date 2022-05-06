@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <omp.h>
 
-#include <iostream>
+// #include <iostream>
 #include <vector>
 
 #include "./deicstra_omp.h"
@@ -72,7 +72,7 @@ TEST(Sequential_Deicstra, Test_Sequential_Deicstra_Two_Times_Static) {
 }
 
 TEST(Sequential_Deicstra, Test_Sequential_Deicstra_Two_Times_Random) {
-  const std::vector<std::vector<int>> graf = getRandomVector(10);
+  const std::vector<std::vector<int>> graf = getRandomVector(5);
   bool check = true;
   const int count = graf.size();
 
@@ -110,22 +110,22 @@ TEST(Parallel_Deicstra, Test_Parallel_Deicstra_With_Seq_Static) {
 }
 
 TEST(Parallel_Deicstra, Test_Parallel_Deicstra_With_Seq_Random) {
-  const std::vector<std::vector<int>> graf = getRandomVector(1000);
+  const std::vector<std::vector<int>> graf = getRandomVector(10);
   bool check = true;
   const int count = graf.size();
   double t1, t2, dt;
 
-  t1 = omp_get_wtime();
+  // t1 = omp_get_wtime();
   const std::vector<int> algorithmResultSeq = getSequentialDeicstra(graf);
-  t2 = omp_get_wtime();
-  dt = t2 - t1;
-  std::cout << "Sequential time = " << dt << std::endl;
+  // t2 = omp_get_wtime();
+  // dt = t2 - t1;
+  // std::cout << "Sequential time = " << dt << std::endl;
 
-  t1 = omp_get_wtime();
+  // t1 = omp_get_wtime();
   const std::vector<int> algorithmResultRarallel = getParallelDeicstra(graf);
-  t2 = omp_get_wtime();
-  dt = t2 - t1;
-  std::cout << "Parallel time = " << dt << std::endl;
+  // t2 = omp_get_wtime();
+  // dt = t2 - t1;
+  // std::cout << "Parallel time = " << dt << std::endl;
 
   for (int i = 0; i < count; ++i) {
     if (algorithmResultSeq[i] != algorithmResultRarallel[i]) {
