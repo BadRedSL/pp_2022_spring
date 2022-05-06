@@ -113,7 +113,7 @@ TEST(Parallel_Deicstra, Test_Parallel_Deicstra_With_Seq_Random) {
   const std::vector<std::vector<int>> graf = getRandomVector(10);
   bool check = true;
   const int count = graf.size();
-  // double t1, t2, dt;
+  double t1, t2, dt;
 
   // t1 = omp_get_wtime();
   const std::vector<int> algorithmResultSeq = getSequentialDeicstra(graf);
